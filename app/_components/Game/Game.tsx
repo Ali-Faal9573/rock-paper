@@ -81,56 +81,60 @@ const Game = () => {
           <ScoreBoard score={score} />
         </div>
 
-        {!isPlaying ? (
-          <div className='flex flex-col items-center'>
-            <h2 className='text-xl md:text-2xl mb-8 text-gray-600'>
-              انتخاب خود را انجام دهید:
-            </h2>
-            <div className='grid grid-cols-3 gap-6 md:gap-12'>
-              <div onClick={() => makeChoice('rock')}>
-                <ChoiceButton choice='rock' />
-              </div>
-              <div onClick={() => makeChoice('paper')}>
-                <ChoiceButton choice='paper' />
-              </div>
-              <div onClick={() => makeChoice('scissors')}>
-                <ChoiceButton choice='scissors' />
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className='flex flex-col items-center'>
-            <div className='flex flex-col md:flex-row justify-around items-center w-full'>
-              <div className='mb-8 md:mb-0'>
-                <h2 className='text-lg md:text-xl mb-4 text-gray-600'>
-                  انتخاب شما
-                </h2>
-                {playerChoice && (
-                  <ChoiceButton choice={playerChoice} disabled size='large' />
-                )}
-              </div>
-
-              {showResult && (
-                <div className='order-last md:order-none my-8'>
-                  <ResultMessage result={gameResult} onPlayAgain={playAgain} />
+        <div className='w-[520px] mx-auto min-h-[500px] flex flex-col items-center justify-between'>
+          {!isPlaying ? (
+            <div className='flex flex-col items-center w-full'>
+              <h2 className='text-xl md:text-2xl mb-8 text-gray-600'>
+                انتخاب خود را انجام دهید:
+              </h2>
+              <div className='grid grid-cols-3 gap-6 md:gap-12 w-full'>
+                <div onClick={() => makeChoice('rock')}>
+                  <ChoiceButton choice='rock' />
                 </div>
-              )}
+                <div onClick={() => makeChoice('paper')}>
+                  <ChoiceButton choice='paper' />
+                </div>
+                <div onClick={() => makeChoice('scissors')}>
+                  <ChoiceButton choice='scissors' />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className='flex flex-col items-center w-full'>
+              <div className='flex justify-around items-center w-full mb-8'>
+                <div>
+                  <h2 className='text-lg md:text-xl mb-4 text-gray-600'>
+                    انتخاب شما
+                  </h2>
+                  {playerChoice && (
+                    <ChoiceButton choice={playerChoice} disabled size='large' />
+                  )}
+                </div>
 
-              <div className='mb-8 md:mb-0'>
-                <h2 className='text-lg md:text-xl mb-4 text-gray-600'>
-                  انتخاب کامپیوتر
-                </h2>
-                {computerChoice ? (
-                  <ChoiceButton choice={computerChoice} disabled size='large' />
+                <div>
+                  <h2 className='text-lg md:text-xl mb-4 text-gray-600'>
+                    انتخاب کامپیوتر
+                  </h2>
+                  {computerChoice ? (
+                    <ChoiceButton choice={computerChoice} disabled size='large' />
+                  ) : (
+                    <div className='w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center animate-pulse'>
+                      <span className='text-gray-500'>در حال انتخاب...</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className='h-[180px] flex items-center justify-center w-full'>
+                {showResult ? (
+                  <ResultMessage result={gameResult} onPlayAgain={playAgain} />
                 ) : (
-                  <div className='w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-200 flex items-center justify-center animate-pulse'>
-                    <span className='text-gray-500'>در حال انتخاب...</span>
-                  </div>
+                  <div className='h-[180px]'></div>
                 )}
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
