@@ -22,26 +22,29 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
 
   const sizeClasses =
     size === 'large'
-      ? 'w-32 h-32 md:w-40 md:h-40'
-      : 'w-24 h-24 md:w-32 md:h-32';
+      ? 'w-[112px] h-[112px] sm:w-32 sm:h-32 md:w-40 md:h-40'
+      : 'w-[80px] h-[80px] sm:w-24 sm:h-24 md:w-32 md:h-32';
 
   const innerSizeClasses =
     size === 'large'
-      ? 'w-24 h-24 md:w-30 md:h-30'
-      : 'w-20 h-20 md:w-24 md:h-24';
+      ? 'w-[80px] h-[80px] sm:w-24 sm:h-24 md:w-30 md:h-30'
+      : 'w-[60px] h-[60px] sm:w-20 sm:h-20 md:w-24 md:h-24';
+
+  const imageSizeClasses = size === 'large'
+    ? { width: 60, height: 60 }
+    : { width: 60, height: 60 };
 
   return (
     <div
-      className={`choice-btn ${choice} ${sizeClasses} ${
-        disabled ? 'opacity-70 cursor-default' : ''
-      }`}
+      className={`choice-btn ${choice} ${sizeClasses} ${disabled ? 'opacity-70 cursor-default' : ''
+        }`}
       onClick={!disabled ? onClick : undefined}>
       <div className={`choice-inner ${innerSizeClasses}`}>
         <Image
           src={choiceToImage[choice]}
           alt={choice}
-          width={size === 'large' ? 60 : 40}
-          height={size === 'large' ? 60 : 40}
+          width={imageSizeClasses.width}
+          height={imageSizeClasses.height}
         />
       </div>
     </div>

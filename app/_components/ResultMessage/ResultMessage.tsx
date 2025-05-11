@@ -12,21 +12,21 @@ const ResultMessage: React.FC<ResultMessageProps> = ({
   if (!result) return null;
 
   const messages = {
-    win: 'شما برنده شدید!',
-    lose: 'شما باختید!',
-    draw: 'مساوی!',
+    win: 'You won!',
+    lose: 'You lost!',
+    draw: 'Draw!',
   };
 
   return (
-    <div className='bg-white rounded-lg p-6 text-center shadow-lg w-64 md:w-80 flex flex-col items-center'>
-      <h2 className='text-4xl font-bold mb-4 text-[#1a365d]'>
+    <div className='bg-white rounded-lg p-4 sm:p-6 text-center shadow-lg w-[224px] sm:w-64 md:w-80 flex flex-col items-center'>
+      <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-[#1a365d]'>
         {messages[result]}
       </h2>
       <button
         onClick={onPlayAgain}
-        className='bg-[#9f7aea] hover:bg-opacity-80 text-white font-bold py-2 px-6 rounded-full 
-        text-lg uppercase tracking-wide transition-colors duration-200'>
-        بازی دوباره
+        className='bg-[#9f7aea] hover:bg-opacity-80 text-white font-bold py-1.5 sm:py-2 px-4 sm:px-6 rounded-full 
+        text-base sm:text-lg uppercase tracking-wide transition-colors duration-200'>
+        Play again
       </button>
     </div>
   );
