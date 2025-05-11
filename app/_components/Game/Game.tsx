@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import ChoiceButton from './ChoiceButton';
-import ResultMessage from './ResultMessage';
-import ScoreBoard from './ScoreBoard';
+import ChoiceButton from '../ChoiceButton/ChoiceButton';
+import ResultMessage from '../ResultMessage/ResultMessage';
+import ScoreBoard from '../ScoreBoard/ScoreBoard';
 
 type Choice = 'rock' | 'paper' | 'scissors' | null;
 type Result = 'win' | 'lose' | 'draw' | null;
@@ -9,7 +9,9 @@ type Result = 'win' | 'lose' | 'draw' | null;
 const Game = () => {
   const [playerChoice, setPlayerChoice] = useState<Choice>(null);
   const [computerChoice, setComputerChoice] = useState<Choice>(null);
-  const [gameResult, setGameResult] = useState<'win' | 'lose' | 'draw' | null>(null);
+  const [gameResult, setGameResult] = useState<'win' | 'lose' | 'draw' | null>(
+    null
+  );
   const [score, setScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showResult, setShowResult] = useState(false);
@@ -37,7 +39,11 @@ const Game = () => {
 
     // Simulate computer choice after a delay
     setTimeout(() => {
-      const choices: ('rock' | 'paper' | 'scissors')[] = ['rock', 'paper', 'scissors'];
+      const choices: ('rock' | 'paper' | 'scissors')[] = [
+        'rock',
+        'paper',
+        'scissors',
+      ];
       const randomChoice = choices[Math.floor(Math.random() * choices.length)];
       setComputerChoice(randomChoice);
 
@@ -49,9 +55,9 @@ const Game = () => {
 
         // Update score
         if (result === 'win') {
-          setScore(prevScore => prevScore + 1);
+          setScore((prevScore) => prevScore + 1);
         } else if (result === 'lose') {
-          setScore(prevScore => Math.max(0, prevScore - 1));
+          setScore((prevScore) => Math.max(0, prevScore - 1));
         }
       }, 500);
     }, 1000);
@@ -66,51 +72,59 @@ const Game = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-      <div className="max-w-4xl w-full">
-        <div className="flex justify-between items-center border-2 border-gray-300 rounded-lg p-4 mb-12">
-          <div className="text-2xl md:text-3xl font-bold text-[#1a365d]">
-            <h1 className="uppercase">سنگ، کاغذ، قیچی</h1>
+    <div className='min-h-screen flex flex-col items-center justify-center p-4 text-center'>
+      <div className='max-w-4xl w-full'>
+        <div className='flex justify-between items-center border-2 border-gray-300 rounded-lg p-4 mb-12'>
+          <div className='text-2xl md:text-3xl font-bold text-[#1a365d]'>
+            <h1 className='uppercase'>سنگ، کاغذ، قیچی</h1>
           </div>
           <ScoreBoard score={score} />
         </div>
 
         {!isPlaying ? (
-          <div className="flex flex-col items-center">
-            <h2 className="text-xl md:text-2xl mb-8 text-gray-600">انتخاب خود را انجام دهید:</h2>
-            <div className="grid grid-cols-3 gap-6 md:gap-12">
+          <div className='flex flex-col items-center'>
+            <h2 className='text-xl md:text-2xl mb-8 text-gray-600'>
+              انتخاب خود را انجام دهید:
+            </h2>
+            <div className='grid grid-cols-3 gap-6 md:gap-12'>
               <div onClick={() => makeChoice('rock')}>
-                <ChoiceButton choice="rock" />
+                <ChoiceButton choice='rock' />
               </div>
               <div onClick={() => makeChoice('paper')}>
-                <ChoiceButton choice="paper" />
+                <ChoiceButton choice='paper' />
               </div>
               <div onClick={() => makeChoice('scissors')}>
-                <ChoiceButton choice="scissors" />
+                <ChoiceButton choice='scissors' />
               </div>
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center">
-            <div className="flex flex-col md:flex-row justify-around items-center w-full">
-              <div className="mb-8 md:mb-0">
-                <h2 className="text-lg md:text-xl mb-4 text-gray-600">انتخاب شما</h2>
-                {playerChoice && <ChoiceButton choice={playerChoice} disabled size="large" />}
+          <div className='flex flex-col items-center'>
+            <div className='flex flex-col md:flex-row justify-around items-center w-full'>
+              <div className='mb-8 md:mb-0'>
+                <h2 className='text-lg md:text-xl mb-4 text-gray-600'>
+                  انتخاب شما
+                </h2>
+                {playerChoice && (
+                  <ChoiceButton choice={playerChoice} disabled size='large' />
+                )}
               </div>
 
               {showResult && (
-                <div className="order-last md:order-none my-8">
+                <div className='order-last md:order-none my-8'>
                   <ResultMessage result={gameResult} onPlayAgain={playAgain} />
                 </div>
               )}
 
-              <div className="mb-8 md:mb-0">
-                <h2 className="text-lg md:text-xl mb-4 text-gray-600">انتخاب کامپیوتر</h2>
+              <div className='mb-8 md:mb-0'>
+                <h2 className='text-lg md:text-xl mb-4 text-gray-600'>
+                  انتخاب کامپیوتر
+                </h2>
                 {computerChoice ? (
-                  <ChoiceButton choice={computerChoice} disabled size="large" />
+                  <ChoiceButton choice={computerChoice} disabled size='large' />
                 ) : (
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-200 flex items-center justify-center animate-pulse">
-                    <span className="text-gray-500">در حال انتخاب...</span>
+                  <div className='w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-200 flex items-center justify-center animate-pulse'>
+                    <span className='text-gray-500'>در حال انتخاب...</span>
                   </div>
                 )}
               </div>
@@ -122,4 +136,4 @@ const Game = () => {
   );
 };
 
-export default Game; 
+export default Game;

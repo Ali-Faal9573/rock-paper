@@ -20,19 +20,22 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
     scissors: '/scissors.svg',
   };
 
-  const sizeClasses = size === 'large'
-    ? 'w-32 h-32 md:w-40 md:h-40'
-    : 'w-24 h-24 md:w-32 md:h-32';
+  const sizeClasses =
+    size === 'large'
+      ? 'w-32 h-32 md:w-40 md:h-40'
+      : 'w-24 h-24 md:w-32 md:h-32';
 
-  const innerSizeClasses = size === 'large'
-    ? 'w-24 h-24 md:w-30 md:h-30'
-    : 'w-20 h-20 md:w-24 md:h-24';
+  const innerSizeClasses =
+    size === 'large'
+      ? 'w-24 h-24 md:w-30 md:h-30'
+      : 'w-20 h-20 md:w-24 md:h-24';
 
   return (
     <div
-      className={`choice-btn ${choice} ${sizeClasses} ${disabled ? 'opacity-70 cursor-default' : ''}`}
-      onClick={!disabled ? onClick : undefined}
-    >
+      className={`choice-btn ${choice} ${sizeClasses} ${
+        disabled ? 'opacity-70 cursor-default' : ''
+      }`}
+      onClick={!disabled ? onClick : undefined}>
       <div className={`choice-inner ${innerSizeClasses}`}>
         <Image
           src={choiceToImage[choice]}
@@ -45,4 +48,4 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
   );
 };
 
-export default ChoiceButton; 
+export default ChoiceButton;
