@@ -10,7 +10,7 @@ const ScoreBoard: React.FC<ScoreBoardProps> = ({ score }) => {
       <div className='text-[#9f7aea] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest'>
         Score
       </div>
-      <div className='text-[#1a365d] text-2xl sm:text-3xl md:text-5xl font-bold'>
+      <div className='text-[#ed64a6] text-2xl sm:text-3xl md:text-5xl font-bold'>
         {score}
       </div>
     </div>
