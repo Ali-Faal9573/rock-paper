@@ -18,7 +18,7 @@ const ResultMessage: React.FC<ResultMessageProps> = ({
   };
 
   return (
-    <div className='bg-white rounded-lg p-4 sm:p-6 text-center shadow-lg w-[224px] sm:w-64 md:w-80 flex flex-col items-center'>
+    <div className='bg-white rounded-lg p-4 sm:p-6 text-center shadow-2xl w-[224px] sm:w-64 md:w-80 flex flex-col items-center border-1 border-gray-200'>
       <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-[#1a365d]'>
         {messages[result]}
       </h2>
