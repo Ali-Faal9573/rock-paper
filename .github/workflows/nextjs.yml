@@ -1,5 +1,5 @@
 # File: .github/workflows/publish.yml
-name: publish-t-github-pages
+name: publish-to-github-pages
 on:
   push:
     branches:
