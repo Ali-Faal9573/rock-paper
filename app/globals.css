@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 body {
-  @apply bg-[#f7fafc] min-h-screen flex flex-col items-center;
+  @apply bg-[#1a365d] min-h-screen flex flex-col items-center;
 }
 
 .choice-btn {
