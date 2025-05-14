@@ -4,7 +4,7 @@ import Game from './_components/Game/Game';
 
 const HomePage = () => {
   return (
-    <div className='min-h-screen bg-[#f7fafc]'>
+    <div className='min-h-80 m-auto bg-[#f7fafc] rounded-lg'>
       <Game />
     </div>
   );
