@@ -1,3 +1,4 @@
+import { getAssetPath } from '@/app/config';
 import Image from 'next/image';
 import React from 'react';
 
@@ -15,9 +16,9 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
   size = 'normal',
 }) => {
   const choiceToImage = {
-    rock: '/rock.svg',
-    paper: '/paper.svg',
-    scissors: '/scissors.svg',
+    rock: getAssetPath('/rock.svg'),
+    paper: getAssetPath('/paper.svg'),
+    scissors: getAssetPath('/scissors.svg'),
   };
 
   const sizeClasses =
@@ -45,6 +46,7 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({
           alt={choice}
           width={imageSizeClasses.width}
           height={imageSizeClasses.height}
+          priority
         />
       </div>
     </div>
